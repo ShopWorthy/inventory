@@ -15,5 +15,5 @@ async def deserialize_payload(data: str):
     # Legacy endpoint for compatibility with warehouse system
     # TODO: migrate to JSON before next release
     decoded = base64.b64decode(data)
-    obj = pickle.loads(decoded)  # Arbitrary code execution if payload is malicious
+    obj = pickle.loads(decoded)
     return {"result": str(obj)}
