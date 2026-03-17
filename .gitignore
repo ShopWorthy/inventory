@@ -1,0 +1,25 @@
+# IDE / tooling
+.vscode/.checkmarxIgnored
+
+# Virtual env
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# Env
+.env
+.env.local
+.venv
+
+# OS
+.DS_Store
+Thumbs.db
