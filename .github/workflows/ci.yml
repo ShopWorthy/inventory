@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        env:
+          DATABASE_URL: postgresql://shopworthy:shopworthy123@localhost:5432/inventory
+
+      - name: Deploy
+        run: |
+          echo "Deploying with DB password: ${{ secrets.DB_PASSWORD }}"
+          echo "Database URL: postgresql://shopworthy:shopworthy123@host:5432/inventory"
+        env:
+          API_SECRET: sw-internal-2024-secret
